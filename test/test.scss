@@ -1,0 +1,9 @@
+@import 'normalize';
+@include normalize();
+
+
+$foo_color: blue;
+
+.foo {
+  color: $foo_color;
+}
