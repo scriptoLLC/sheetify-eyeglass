@@ -12,10 +12,16 @@ function sheetifyEyeglass (filename, source, options, done) {
 
   sass.render(eyeglass(sassOpts), function (err, res) {
     if (err) return done(err)
-    done(null, {
+    var data = {
       css: String(res.css),
-      files: res.includedFiles
-    })
+      files: res.stats.includedFiles
+    }
+
+    if (res.map) {
+      data.map = String(res.map)
+    }
+
+    done(null, data)
   })
 }
 
